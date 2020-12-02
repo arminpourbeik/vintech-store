@@ -1,0 +1,20 @@
+/* Color Theme Swatches in Hex */
+.Thumbelina-1-hex { color: #2955D9; }
+.Thumbelina-2-hex { color: #3068D9; }
+.Thumbelina-3-hex { color: #367DD9; }
+.Thumbelina-4-hex { color: #82B8D9; }
+.Thumbelina-5-hex { color: #448C30; }
+
+/* Color Theme Swatches in RGBA */
+.Thumbelina-1-rgba { color: rgba(41, 85, 216, 1); }
+.Thumbelina-2-rgba { color: rgba(47, 104, 216, 1); }
+.Thumbelina-3-rgba { color: rgba(54, 124, 216, 1); }
+.Thumbelina-4-rgba { color: rgba(130, 183, 216, 1); }
+.Thumbelina-5-rgba { color: rgba(67, 140, 47, 1); }
+
+/* Color Theme Swatches in HSLA */
+.Thumbelina-1-hsla { color: hsla(225, 69, 50, 1); }
+.Thumbelina-2-hsla { color: hsla(219, 68, 51, 1); }
+.Thumbelina-3-hsla { color: hsla(213, 68, 53, 1); }
+.Thumbelina-4-hsla { color: hsla(202, 53, 68, 1); }
+.Thumbelina-5-hsla { color: hsla(106, 49, 36, 1); }

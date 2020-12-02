@@ -1,3 +1,13 @@
+import PageLayout from '../components/PageLayout'
+
+import Banner from '../components/Hero'
+import FeaturedProducts from '../components/Product/FeaturedProducts'
+
 export default function Home() {
-  return <div>Home page</div>
+  return (
+    <PageLayout>
+      <Banner />
+      <FeaturedProducts />
+    </PageLayout>
+  )
 }

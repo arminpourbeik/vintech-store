@@ -1,3 +1,9 @@
+import PageLayout from '../components/PageLayout'
+
 export default function Checkout() {
-  return <div>Checkout page</div>
+  return (
+    <PageLayout>
+      <div>Checkout</div>
+    </PageLayout>
+  )
 }

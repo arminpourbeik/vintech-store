@@ -1,3 +1,9 @@
+import PageLayout from '../components/PageLayout'
+
 export default function Error() {
-  return <div>Error page</div>
+  return (
+    <PageLayout>
+      <div>Error</div>
+    </PageLayout>
+  )
 }
