@@ -17,7 +17,7 @@ const InputContainer = styled.section`
     right: 1.5rem;
     font-size: 1.3rem;
     padding: 0;
-    margin: 0;
+    margin: ;
   }
 `
 

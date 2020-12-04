@@ -19,6 +19,13 @@ const SearchContainer = styled.div`
     right: 0.5rem;
     padding: 0;
     font-size: 1.2rem;
+    color: ${(p) => p.theme.mainGreen};
+  }
+
+  transition: width 0.3s ease-in;
+
+  &:hover {
+    width: 26rem;
   }
 `
 
@@ -27,6 +34,7 @@ const SearchInput = styled.input`
   border: none;
   line-height: 0;
   outline: none;
+  border-radius: 25px;
   width: 100%;
 `
 
