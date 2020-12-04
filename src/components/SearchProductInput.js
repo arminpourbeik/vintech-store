@@ -5,15 +5,29 @@ import { FaSearch } from 'react-icons/fa'
 
 import { ProductContext } from '../context/products/product.context'
 
-const SearchInput = styled.input`
-  margin: 0 auto;
-  margin-bottom: 1rem;
-  text-align: center;
-  padding: 0.7rem 1.5rem;
+const SearchContainer = styled.div`
   width: 24rem;
-  border-radius: 10px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  position: relative;
+
+  & svg {
+    position: absolute;
+    top: 0.8rem;
+    right: 0.5rem;
+    padding: 0;
+    font-size: 1.2rem;
+  }
+`
+
+const SearchInput = styled.input`
+  padding: 1rem 1.5rem;
   border: none;
+  line-height: 0;
   outline: none;
+  width: 100%;
 `
 
 export default function SearchProductInput() {
@@ -22,11 +36,14 @@ export default function SearchProductInput() {
 
   return (
     <>
-      <SearchInput
-        placeholder='search products'
-        value={search}
-        onChange={updateSearch}
-      />
+      <SearchContainer>
+        <SearchInput
+          placeholder='search products'
+          value={search}
+          onChange={updateSearch}
+        />
+        <FaSearch />
+      </SearchContainer>
     </>
   )
 }

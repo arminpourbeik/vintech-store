@@ -1,3 +1,5 @@
+import { useLocation } from 'react-router-dom'
+
 import styled from 'styled-components'
 
 import Product from './Product'
@@ -21,11 +23,14 @@ const ProductListHeader = styled.section`
 `
 
 export default function ProductList({ title, products }) {
+  // pathname
+  const { pathname } = useLocation()
+
   return (
     <>
       <ProductListHeader>
         <Title>{title}</Title>
-        <SearchProductInput />
+        {pathname === '/products' && <SearchProductInput />}
       </ProductListHeader>
       <ProductListContainer>
         {products.map((product) => (
