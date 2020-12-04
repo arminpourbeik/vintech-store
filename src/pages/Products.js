@@ -6,14 +6,14 @@ import Loading from '../components/Loading'
 import ProductList from '../components/Product/ProductList'
 
 export default function Products() {
-  const { loading, products } = useContext(ProductContext)
+  const { loading, sorted } = useContext(ProductContext)
 
   return (
     <PageLayout>
       {loading ? (
         <Loading />
       ) : (
-        <ProductList products={products} title='our products' />
+        <ProductList products={sorted} title='our products' />
       )}
     </PageLayout>
   )

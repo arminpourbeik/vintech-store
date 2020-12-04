@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import Product from './Product'
+import SearchProductInput from '../SearchProductInput'
 import { Title } from '../common'
 
 const ProductListContainer = styled.main`
@@ -13,11 +14,19 @@ const ProductListContainer = styled.main`
   width: 80%;
   padding: 1rem;
 `
+const ProductListHeader = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`
 
 export default function ProductList({ title, products }) {
   return (
     <>
-      <Title>{title}</Title>
+      <ProductListHeader>
+        <Title>{title}</Title>
+        <SearchProductInput />
+      </ProductListHeader>
       <ProductListContainer>
         {products.map((product) => (
           <Product key={product.id} {...product} />

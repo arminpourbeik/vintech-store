@@ -11,6 +11,11 @@ export default function ProductProvider({ children }) {
   const [featured, setFeatured] = useState([])
   const [loading, setLoading] = useState(false)
 
+  const [sorted, setSorted] = useState([])
+
+  // Filters
+  const [search, setSearch] = useState('')
+
   useEffect(() => {
     async function getProducts() {
       setLoading(true)
@@ -19,6 +24,7 @@ export default function ProductProvider({ children }) {
 
       setProducts(products)
       setFeatured(featuredProducts(products))
+      setSorted(products)
       setLoading(false)
     }
 
@@ -28,8 +34,27 @@ export default function ProductProvider({ children }) {
     return () => {}
   }, [])
 
+  function updateSearch(e) {
+    setSearch(e.target.value)
+  }
+
+  useEffect(() => {
+    if (search !== '') {
+      const newProducts = products.filter((item) => {
+        let title = item.title.toLowerCase().trim()
+        return title.startsWith(search) ? item : null
+      })
+
+      setSorted(newProducts)
+    } else {
+      setSorted(products)
+    }
+  }, [search, products])
+
   return (
-    <ProductContext.Provider value={{ loading, products, featured }}>
+    <ProductContext.Provider
+      value={{ loading, products, featured, sorted, search, updateSearch }}
+    >
       {children}
     </ProductContext.Provider>
   )
