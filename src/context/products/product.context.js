@@ -1,7 +1,6 @@
 import { createContext, useState, useEffect } from 'react'
-import axios from 'axios'
+import axios from '../../api/base'
 
-import URL from '../../utils/URL'
 import { imageUrl, featuredProducts } from '../../utils/helpers'
 
 export const ProductContext = createContext()
@@ -15,7 +14,7 @@ export default function ProductProvider({ children }) {
   useEffect(() => {
     async function getProducts() {
       setLoading(true)
-      const response = await axios.get(`${URL}/products`)
+      const response = await axios.get('/products')
       const products = imageUrl(response.data)
 
       setProducts(products)

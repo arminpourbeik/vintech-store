@@ -7,15 +7,18 @@ import reportWebVitals from './reportWebVitals'
 import ProductProvider from './context/products/product.context'
 import UserProvider from './context/users/users.conext'
 import AlertProvider from './context/UI/alert.context'
+import CartContext from './context/cart/cart.context'
 
 ReactDOM.render(
   <React.StrictMode>
     <UserProvider>
-      <AlertProvider>
-        <ProductProvider>
-          <App />
-        </ProductProvider>
-      </AlertProvider>
+      <CartContext>
+        <AlertProvider>
+          <ProductProvider>
+            <App />
+          </ProductProvider>
+        </AlertProvider>
+      </CartContext>
     </UserProvider>
   </React.StrictMode>,
   document.getElementById('root')

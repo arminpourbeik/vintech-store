@@ -7,7 +7,7 @@ import Overlay from './Overlay'
 import { AlertContext } from '../../context/UI/alert.context'
 
 const AlertContainer = styled.div`
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   width: 24rem;

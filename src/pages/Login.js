@@ -112,6 +112,8 @@ export default function Login() {
       userLogin({ username, token })
       history.push('/products')
       showAlert({ message: `hello! ${username}! you are now logged in.` })
+    } else {
+      showAlert({ message: 'there was an error, please try again' })
     }
   }
 

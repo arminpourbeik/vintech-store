@@ -1,8 +1,9 @@
 import { useContext } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { ProductContext } from '../context/products/product.context'
+import { CartContext } from '../context/cart/cart.context'
 
 import PageLayout from '../components/PageLayout'
 import Loading from '../components/Loading'
@@ -57,13 +58,17 @@ function ProductDetails() {
   // Product context
   const { products } = useContext(ProductContext)
 
+  // Cart context
+  const { addToCart } = useContext(CartContext)
+
   // URL parameter
   let { id } = useParams()
 
+  // History object
+  const history = useHistory()
+
   // Get product by id
   const product = products.find((p) => p.id === parseInt(id))
-
-  console.log(product)
 
   if (products.length === 0) return <Loading />
 
@@ -77,7 +82,15 @@ function ProductDetails() {
           <h2>{title}</h2>
           <h3>${price}</h3>
           <p>{description}</p>
-          <AnchorButton block green to='/cart'>
+          <AnchorButton
+            block
+            green
+            to='#'
+            onClick={() => {
+              addToCart(product)
+              history.push('/cart')
+            }}
+          >
             add to cart
           </AnchorButton>
         </div>
