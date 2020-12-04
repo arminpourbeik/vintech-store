@@ -5,12 +5,18 @@ import reportWebVitals from './reportWebVitals'
 
 // Contexts
 import ProductProvider from './context/products/product.context'
+import UserProvider from './context/users/users.conext'
+import AlertProvider from './context/UI/alert.context'
 
 ReactDOM.render(
   <React.StrictMode>
-    <ProductProvider>
-      <App />
-    </ProductProvider>
+    <UserProvider>
+      <AlertProvider>
+        <ProductProvider>
+          <App />
+        </ProductProvider>
+      </AlertProvider>
+    </UserProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )

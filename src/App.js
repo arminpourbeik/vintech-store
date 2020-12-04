@@ -20,6 +20,10 @@ import ProductDetails from './pages/ProductDetails'
 import Error from './pages/404'
 import Login from './pages/Login'
 
+// Components
+import PrivateRoute from './components/PrivateRoute'
+import Alert from './components/common/Alert'
+
 export default function App() {
   // Theme state
   const [theme] = useState(LightTheme)
@@ -27,6 +31,7 @@ export default function App() {
   return (
     <ThemeProvider theme={{ ...theme }}>
       <GlobalStyle />
+      <Alert />
       <Router>
         <Switch>
           <Route path='/' exact>
@@ -35,12 +40,12 @@ export default function App() {
           <Route path='/about'>
             <About />
           </Route>
-          <Route path='/cart'>
+          <PrivateRoute path='/cart'>
             <Cart />
-          </Route>
-          <Route path='/checkout'>
+          </PrivateRoute>
+          <PrivateRoute path='/checkout'>
             <Checkout />
-          </Route>
+          </PrivateRoute>
           <Route path='/products' exact>
             <Products />
           </Route>

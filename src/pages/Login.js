@@ -1,8 +1,19 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
+
 import PageLayout from '../components/PageLayout'
 
+// Context
+import { UserContext } from '../context/users/users.conext'
+import { AlertContext } from '../context/UI/alert.context'
+
+// Strapi functions
+import login from '../api/login'
+import register from '../api/register'
+
 import { Button } from '../components/common'
+import Alert from '../components/common/Alert'
 
 const FormContainer = styled.main`
   width: 40%;
@@ -49,9 +60,9 @@ const Input = styled.input`
   width: 100%;
   padding: 1rem;
   margin-bottom: 1rem;
-  text-transform: capitalize;
   border-radius: 5px;
   border: 2px solid ${(p) => p.theme.mainBlue};
+  outline-color: ${(p) => p.theme.mainGreen};
 `
 
 export default function Login() {
@@ -63,10 +74,21 @@ export default function Login() {
   })
   const [isMember, setIsMember] = useState(true)
 
+  const { username, password, email } = formInputs
+
+  const isEmpty = !username || !password || !email
+
+  // History object
+  const history = useHistory()
+
+  // User context
+  const { userLogin } = useContext(UserContext)
+  const { showAlert } = useContext(AlertContext)
+
   function toggleIsMember() {
-    setIsMember((oldState) => {
+    setIsMember((s) => {
       setFormInputs({ ...formInputs, username: '' })
-      return !oldState
+      return !s
     })
   }
 
@@ -74,18 +96,29 @@ export default function Login() {
     setFormInputs({ ...formInputs, [e.target.name]: e.target.value })
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
+
+    let response
+    if (isMember) response = await login({ email, password })
+    else response = await register({ email, password, username })
+
+    if (response) {
+      const {
+        jwt: token,
+        user: { username },
+      } = response.data
+
+      userLogin({ username, token })
+      history.push('/products')
+      showAlert({ message: `hello! ${username}! you are now logged in.` })
+    }
   }
-
-  const { username, password, email } = formInputs
-
-  const isEmpty = !username || !password || !email
 
   return (
     <PageLayout>
       <FormContainer>
-        <h2>login</h2>
+        <h2>{isMember ? 'login' : 'register'}</h2>
         <Form>
           <Input
             type='text'

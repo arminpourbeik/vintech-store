@@ -18,8 +18,6 @@ export default function ProductProvider({ children }) {
       const response = await axios.get(`${URL}/products`)
       const products = imageUrl(response.data)
 
-      console.log(products)
-
       setProducts(products)
       setFeatured(featuredProducts(products))
       setLoading(false)

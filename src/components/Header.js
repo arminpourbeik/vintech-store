@@ -3,6 +3,8 @@ import styled from 'styled-components'
 
 import logo from '../assets/images/logo.svg'
 
+import LoginLink from './LoginLink'
+
 const Logo = styled.img`
   margin: 0 auto;
   padding: 2rem;
@@ -73,11 +75,7 @@ export default function Header() {
           </MenuItem>
         </MenuSection>
         <MenuSection>
-          <MenuItem>
-            <StyledLink to='/login' isActive={pathname === '/login'}>
-              login
-            </StyledLink>
-          </MenuItem>
+          <LoginLink />
           <MenuItem>
             <StyledLink to='/cart' isActive={pathname === '/cart'}>
               cart
@@ -88,3 +86,5 @@ export default function Header() {
     </HeaderWrapper>
   )
 }
+
+export { MenuItem, StyledLink }
